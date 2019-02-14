@@ -1,4 +1,4 @@
-package org.lyx.handlerDemo;
+package org.lyx.handlerDemo.client.handler;
 
  
 
@@ -27,17 +27,11 @@ public class HelloClientIntHandler extends ChannelInboundHandlerAdapter {
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 
 		logger.info("HelloClientIntHandler.channelRead");
-
 		ByteBuf result = (ByteBuf) msg;
-
 		byte[] result1 = new byte[result.readableBytes()];
-
 		result.readBytes(result1);
-
 		result.release();
-
 		ctx.close();
-
 		System.out.println("Server said:" + new String(result1));
 
 	}

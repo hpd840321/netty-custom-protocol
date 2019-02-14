@@ -18,7 +18,10 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.serialization.ClassResolvers;
 import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.serialization.ObjectEncoder;
-import org.lyx.handlerDemo.*;
+import org.lyx.handlerDemo.client.handler.InboundHandler3;
+import org.lyx.handlerDemo.client.handler.InboundHandler4;
+import org.lyx.handlerDemo.client.handler.OutboundHandler3;
+import org.lyx.handlerDemo.client.handler.OutboundHandler4;
 
 public class HelloClient {
 

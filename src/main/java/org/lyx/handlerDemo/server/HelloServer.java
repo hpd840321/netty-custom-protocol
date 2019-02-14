@@ -11,10 +11,10 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.serialization.ClassResolvers;
 import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.serialization.ObjectEncoder;
-import org.lyx.handlerDemo.InboundHandler1;
-import org.lyx.handlerDemo.InboundHandler2;
-import org.lyx.handlerDemo.OutboundHandler1;
-import org.lyx.handlerDemo.OutboundHandler2;
+import org.lyx.handlerDemo.server.handler.InboundHandler1;
+import org.lyx.handlerDemo.server.handler.InboundHandler2;
+import org.lyx.handlerDemo.server.handler.OutboundHandler1;
+import org.lyx.handlerDemo.server.handler.OutboundHandler2;
 
 
 public class HelloServer {

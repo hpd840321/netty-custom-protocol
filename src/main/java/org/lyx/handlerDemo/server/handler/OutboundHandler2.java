@@ -1,4 +1,4 @@
-package org.lyx.handlerDemo;
+package org.lyx.handlerDemo.server.handler;
 
  
 
