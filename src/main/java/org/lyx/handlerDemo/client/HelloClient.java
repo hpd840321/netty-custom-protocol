@@ -17,6 +17,7 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.serialization.ClassResolvers;
 import io.netty.handler.codec.serialization.ObjectDecoder;
+import io.netty.handler.codec.serialization.ObjectEncoder;
 import org.lyx.handlerDemo.*;
 
 public class HelloClient {
@@ -31,21 +32,21 @@ public class HelloClient {
 			b.handler(new ChannelInitializer<SocketChannel>() {
 				@Override
 				public void initChannel(SocketChannel ch) throws Exception {
+					ch.pipeline().addLast(new ObjectEncoder());
 					ch.pipeline().addLast(new OutboundHandler3());
 					ch.pipeline().addLast(new OutboundHandler4());
 					// 注册两个InboundHandler，执行顺序为注册顺序，所以应该是InboundHandler1 InboundHandler2
 					ch.pipeline().addLast(new ObjectDecoder(Integer.MAX_VALUE, ClassResolvers.weakCachingConcurrentResolver(null))); // 最大长度
 					ch.pipeline().addLast(new InboundHandler3());
 					ch.pipeline().addLast(new InboundHandler4());
+
 				}
 			});
 			// Start the client.
 			ChannelFuture f = b.connect(host, port).sync();
 			f.channel().closeFuture().sync();
 		} finally {
-
 			workerGroup.shutdownGracefully();
-
 		}
 
 	}
@@ -53,11 +54,8 @@ public class HelloClient {
  
 
 	public static void main(String[] args) throws Exception {
-
 		HelloClient client = new HelloClient();
-
 		client.connect("127.0.0.1", 8000);
-
 	}
 
 }
