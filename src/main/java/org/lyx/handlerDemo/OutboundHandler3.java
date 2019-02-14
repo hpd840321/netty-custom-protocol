@@ -16,13 +16,13 @@ public class OutboundHandler3 extends ChannelOutboundHandlerAdapter {
 	@Override
 	// 向client发送消息
 	public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {
-
 		logger.info("OutboundHandler3.write");
-		String response = "I am ok!";
-		ByteBuf encoded = ctx.alloc().buffer(4 * response.length());
-		encoded.writeBytes(response.getBytes());
-		ctx.write(encoded);
-		ctx.flush();
+		if (msg instanceof  Integer){
+			Integer  a=(Integer)msg;
+			logger.info("a: {}",a);
+			++a;
+			ctx.writeAndFlush(a);
+		}
 
 	}
 

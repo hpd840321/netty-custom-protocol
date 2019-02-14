@@ -8,6 +8,9 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.serialization.ClassResolvers;
+import io.netty.handler.codec.serialization.ObjectDecoder;
+import io.netty.handler.codec.serialization.ObjectEncoder;
 import org.lyx.handlerDemo.InboundHandler1;
 import org.lyx.handlerDemo.InboundHandler2;
 import org.lyx.handlerDemo.OutboundHandler1;
@@ -25,9 +28,11 @@ public class HelloServer {
 								@Override
 								public void initChannel(SocketChannel ch) throws Exception {
 									// 注册两个OutboundHandler，执行顺序为注册顺序的逆序，所以应该是OutboundHandler2 OutboundHandler1
-									ch.pipeline().addLast(new OutboundHandler1());
+									ch.pipeline().addLast(new ObjectEncoder());
 									ch.pipeline().addLast(new OutboundHandler2());
+									ch.pipeline().addLast(new OutboundHandler1());
 									// 注册两个InboundHandler，执行顺序为注册顺序，所以应该是InboundHandler1 InboundHandler2
+									ch.pipeline().addLast(new ObjectDecoder(Integer.MAX_VALUE, ClassResolvers.weakCachingConcurrentResolver(null))); // 最大长度
 									ch.pipeline().addLast(new InboundHandler1());
 									ch.pipeline().addLast(new InboundHandler2());
 								}

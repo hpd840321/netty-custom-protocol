@@ -14,7 +14,12 @@ public class OutboundHandler4 extends ChannelOutboundHandlerAdapter {
 	public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {
 		logger.info("OutboundHandler4.write");
 		// 执行下一个OutboundHandler
-		super.write(ctx, msg, promise);
+		if (msg instanceof  Integer){
+			Integer  a=(Integer)msg;
+			logger.info("a: {}",a);
+			++a;
+			ctx.writeAndFlush(a);
+		}
 
 	}
 

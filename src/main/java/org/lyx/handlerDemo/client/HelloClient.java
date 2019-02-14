@@ -15,6 +15,8 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.serialization.ClassResolvers;
+import io.netty.handler.codec.serialization.ObjectDecoder;
 import org.lyx.handlerDemo.*;
 
 public class HelloClient {
@@ -32,7 +34,9 @@ public class HelloClient {
 					ch.pipeline().addLast(new OutboundHandler3());
 					ch.pipeline().addLast(new OutboundHandler4());
 					// 注册两个InboundHandler，执行顺序为注册顺序，所以应该是InboundHandler1 InboundHandler2
-					ch.pipeline().addLast(new HelloClientIntHandler());
+					ch.pipeline().addLast(new ObjectDecoder(Integer.MAX_VALUE, ClassResolvers.weakCachingConcurrentResolver(null))); // 最大长度
+					ch.pipeline().addLast(new InboundHandler3());
+					ch.pipeline().addLast(new InboundHandler4());
 				}
 			});
 			// Start the client.

@@ -27,11 +27,12 @@ public class OutboundHandler1 extends ChannelOutboundHandlerAdapter {
 	public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {
 
 		logger.info("OutboundHandler1.write");
-		String response = "I am ok!";
-		ByteBuf encoded = ctx.alloc().buffer(4 * response.length());
-		encoded.writeBytes(response.getBytes());
-		ctx.write(encoded);
-		ctx.flush();
+		if (msg instanceof  Integer){
+			Integer  a=(Integer)msg;
+			logger.info("a: {}",a);
+			++a;
+			ctx.writeAndFlush(a);
+		}
 
 	}
 
