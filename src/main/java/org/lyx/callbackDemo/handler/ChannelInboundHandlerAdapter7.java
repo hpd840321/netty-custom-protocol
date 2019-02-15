@@ -1,22 +1,20 @@
 package org.lyx.callbackDemo.handler;
 
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelFutureListener;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.*;
 
-public class ChannelInboundHandlerAdapter6 extends ChannelInboundHandlerAdapter {
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class ChannelInboundHandlerAdapter7 extends ChannelInboundHandlerAdapter {
+     ExecutorService fixedThreadPool = Executors.newFixedThreadPool(10);
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         System.out.println("ChannelInboundHandlerAdapter6");
-
-        new Thread(new ThreadTep(ctx.channel())).start();
+        fixedThreadPool.execute(new ThreadTep(ctx.channel()));
     }
 
     class ThreadTep implements Runnable {
         private Channel channel;
-
         public ThreadTep() {
         }
 
@@ -35,7 +33,6 @@ public class ChannelInboundHandlerAdapter6 extends ChannelInboundHandlerAdapter 
                     }
                 }
             });
-
             System.out.println("continue,not stop");
         }
     }

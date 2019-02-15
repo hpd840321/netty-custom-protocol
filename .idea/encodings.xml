@@ -13,11 +13,13 @@
     <file url="file://$PROJECT_DIR$/src/main/java/org/lyx/callbackDemo/handler/ChannelInboundHandlerAdapter3.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/org/lyx/callbackDemo/handler/ChannelInboundHandlerAdapter5.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/org/lyx/callbackDemo/handler/ChannelInboundHandlerAdapter6.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/lyx/callbackDemo/handler/ChannelInboundHandlerAdapter7.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/org/lyx/callbackDemo/handler/ChannelInboundHandlerAdapterFileRegion.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/org/lyx/callbackDemo/handler/ChannelOutboundHandlerAdapter1.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/org/lyx/callbackDemo/handler/ChannelOutboundHandlerAdapter2.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/org/lyx/callbackDemo/handler/ChannelOutboundHandlerAdapter3.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/org/lyx/callbackDemo/handler/Client2.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/lyx/callbackDemo/handler/ClientHandler1.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/org/lyx/callbackDemo/handler/FastThreadLocalTest.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/org/lyx/callbackDemo/handler/RecyclerTest.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/org/lyx/callbackDemo/handler/ServerFileRegion.java" charset="GBK" />

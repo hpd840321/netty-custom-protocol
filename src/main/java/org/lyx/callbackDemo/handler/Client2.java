@@ -22,6 +22,7 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.LineBasedFrameDecoder;
 import io.netty.handler.codec.string.StringDecoder;
+import io.netty.handler.codec.string.StringEncoder;
 import org.lyx.callbackDemo.EchoClientHandler;
 
 /**
@@ -49,10 +50,11 @@ public final class Client2 {
                  @Override
                  public void initChannel(SocketChannel ch) throws Exception {
                      ChannelPipeline p = ch.pipeline();
-                     p.addLast(new LineBasedFrameDecoder(1024)); //很重要哦
-                     p.addLast(new StringDecoder()); //很重要哦
+                   //  p.addLast(new LineBasedFrameDecoder(1024)); //很重要哦
+                     p.addLast(new StringDecoder());
+                     p.addLast(new StringEncoder());
                      //p.addLast(new LoggingHandler(LogLevel.INFO));
-                     p.addLast(new EchoClientHandler());
+                     p.addLast(new ClientHandler1());
                  }
              });
 
